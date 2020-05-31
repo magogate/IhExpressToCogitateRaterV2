@@ -24,7 +24,7 @@ def index():
         returnXML = cxml.readXML(xmlValue)
         # print(returnXML)
         # time.sleep( 2 )
-        response = requests.request("POST", localUrl, headers=headers, data = returnXML)
+        response = requests.request("POST", devUrl, headers=headers, data = returnXML)
         # print("**************************Response****************************")
         # print(response.text.replace("/>","/>\n").replace("?>","?>\n"))
         htmTag = "<html><body><div><textarea rows='100' cols='200' style='border:none;'>" + response.text.replace(">",">\n") + "</textarea></div></body></html>"

@@ -1,7 +1,7 @@
 import os
 
-ihExpessXML = os.path.join("./IHExpressRqXml", "000050400.xml")
-cogitateXML = os.path.join("./../NewRater/NewRater/App_Data", "SGIH-GAPPA.xml")
+# ihExpessXML = os.path.join("./IHExpressRqXml", "000050400.xml")
+# cogitateXML = os.path.join("./../NewRater/NewRater/App_Data", "SGIH-GAPPA.xml")
 
 
 
@@ -35,7 +35,7 @@ def readXML(inputXML):
       <RulesState>GAPA</RulesState>
       <RaterUrl>https://rater.cogitate.us/api/rater</RaterUrl>
       <ProductCode>PPA</ProductCode>
-      <CoverHolder>IH.AutoRaterMigration</CoverHolder>
+      <CoverHolder>SGIH</CoverHolder>
    </SignIn>"""
 
 
@@ -64,37 +64,37 @@ def readXML(inputXML):
         
     print("##############################################")
 
-    fwrite= open(cogitateXML,"w+")
-    fwrite.close
-    fwrite= open(cogitateXML,"w+")
+    # fwrite= open(cogitateXML,"w+")
+    # fwrite.close
+    # fwrite= open(cogitateXML,"w+")
 
     for i in range(len(taglist)):
         if("<Rater>" in taglist[i]):
             print(taglist[i])
-            fwrite.write(taglist[i]+"\n")
+            # fwrite.write(taglist[i]+"\n")
             returnXML = returnXML + taglist[i]+"\n"
             print(signInTag)
-            fwrite.write(signInTag+"\n")
+            # fwrite.write(signInTag+"\n")
             returnXML = returnXML + signInTag+"\n"
         elif('code="Policy"' in taglist[i]):
             print("")
-            fwrite.write("\n")
+            # fwrite.write("\n")
             returnXML = returnXML + "\n"
         elif(policyEndTag and 'code="Driver"' in taglist[i+1]):
             policyEndTag = False
             print("")            
-            fwrite.write("\n")
+            # fwrite.write("\n")
             returnXML = returnXML + "\n"
         elif(">" in taglist[i]):
             print(taglist[i].replace("/>","></Parameter>"))
-            fwrite.write(taglist[i].replace("/>","></Parameter>")+"\n")
+            # fwrite.write(taglist[i].replace("/>","></Parameter>")+"\n")
             returnXML = returnXML + taglist[i].replace("/>","></Parameter>")+"\n"
         else:
-            fwrite.write(taglist[i]+"\n")
+            # fwrite.write(taglist[i]+"\n")
             returnXML = returnXML + taglist[i]+"\n"
 	        # print(taglist[i])
                   
-    fwrite.close
+    # fwrite.close
     return returnXML
 
 
